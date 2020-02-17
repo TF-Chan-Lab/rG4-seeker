@@ -23,7 +23,7 @@ Installation
 
     git clone https://github.com/TF-Chan-Lab/rG4-seeker
     cd rG4-seeker
-    python setup.py install
+    pip install .
 
 =====
 Usage
@@ -201,12 +201,12 @@ Docker image distribution
 
     1. Install Docker following instructions on Docker homepage https://docs.docker.com/
 
-    2. Download the rG4-seeker Docker image `rG4_seeker.docker.tar.gz  <https://drive.google.com/open?id=1YPM_ohJhYwIurzxC5w_Yg-nMAVo6zmXA>`_
+    2. Download the rG4-seeker Docker image `rg4_seeker.docker.tar.gz  <https://drive.google.com/file/d/1WhhsBOnVemaUVsIQKCkQGSZlgr5kp3Gc/view?usp=sharing>`_
 
     3. Import rG4-seeker Docker image::
 
         sudo docker load -i rg4_seeker.docker.tar.gz
-        sudo docker run rG4-seeker
+        sudo docker run rg4_seeker
 
 * Usage
 
@@ -215,7 +215,7 @@ Docker image distribution
     * Running rG4-seeker from Docker::
 
         cd working_dir
-        sudo docker run -v [working_dir]:[working_dir] rG4-seeker [abs_path_to_config.ini]
+        sudo docker run -v [working_dir]:[working_dir] rg4_seeker [abs_path_to_config.ini]
 
 
         * Notes: The ‘-v’ option allows dockerized programs to read/write files outside its container, and is required for rG4-seeker to access input files / write result files.

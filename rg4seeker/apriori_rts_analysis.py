@@ -51,11 +51,11 @@ RTS_csv_header = ['chromosome',
                   'rG4_intervals',
                   'splicing',
                   'sequence_diagram', ]
-FIRST_STAGE_ALPHA_DICT = {'0.2': 0, '0.15874': 1, '0.12599': 2, '0.1': 3, '0.079370': 4, '0.062996': 5, '0.05': 6}
+FIRST_STAGE_ALPHA_DICT = {'0.2': 0, '0.15874': 1, '0.12599': 2, '0.1': 3, '0.07937': 4, '0.062996': 5, '0.05': 6}
 COVERAGE_MIN_FILTER = 6
 FIRST_STAGE_ALPHA_ALLOWANCE = 0.2
 FIRST_STAGE_MIN_FSR_DIFF = 0.05
-FIRST_STAGE_ALPHA_VALUES = tuple([0.2, 0.15874, 0.12599, 0.1, 0.079370, 0.062996, 0.05])
+FIRST_STAGE_ALPHA_VALUES = tuple([0.2, 0.15874, 0.12599, 0.1, 0.07937, 0.062996, 0.05])
 SECOND_STAGE_EXPECTED_READSTOP_PROB = 0.025
 RE_g6 = re.compile('G{6,}')
 RE_digest_iv_str = re.compile('^(.+):([0-9]+)-([0-9]+):([+-.])$')
@@ -226,12 +226,15 @@ def load_fsrtsv(_fsr_store, _fsrtsv_path, _cutoff_config_path, _whitelist_array,
     if _cutoff_config_path == 'None':
         sample_first_alpha_cutoff = FIRST_STAGE_ALPHA_ALLOWANCE
         sample_second_alpha_cutoff = FIRST_STAGE_ALPHA_ALLOWANCE
+        second_alpha_field =  FIRST_STAGE_ALPHA_DICT[str(FIRST_STAGE_ALPHA_ALLOWANCE)]
     else:
         with open(_cutoff_config_path) as f:
             lines = f.readlines()
-            sample_first_alpha_cutoff = float(lines[0].strip())
-            sample_second_alpha_cutoff = float(lines[1].strip())
-    second_alpha_field = FIRST_STAGE_ALPHA_DICT[str(sample_first_alpha_cutoff)]
+            str_sample_first_alpha_cutoff = lines[0].strip().rstrip("0")
+            sample_first_alpha_cutoff = float(str_sample_first_alpha_cutoff)
+            str_sample_second_alpha_cutoff = lines[0].strip().rstrip("0")
+            sample_second_alpha_cutoff = float(str_sample_second_alpha_cutoff)
+            second_alpha_field = FIRST_STAGE_ALPHA_DICT[str_sample_first_alpha_cutoff]
 
     i = 0
     with xopen(_fsrtsv_path) as f:
@@ -608,7 +611,18 @@ def ivlist_fetch_annotation(_ivlist, _transcriptome_dict):
             transcript_ids = final_transcript_ids
         else:
             gene_names, transcript_ids, cdsutr = transcriptome.annotation_query(_ivlist)
-        output_accu += [';'.join(gene_names), ';'.join(transcript_ids), ';'.join(cdsutr)]
+        if gene_names:
+            output_accu.append(';'.join(gene_names))
+        else:
+            output_accu.append('N/A')
+        if transcript_ids:
+            output_accu.append(';'.join(transcript_ids))
+        else:
+            output_accu.append('N/A')
+        if cdsutr:
+            output_accu.append(';'.join(cdsutr))
+        else:
+            output_accu.append('N/A')
     return output_accu
 
 
