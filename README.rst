@@ -68,7 +68,7 @@ Usage
 ================
 Example dataset
 ================
-* An example dataset `hela-2016-chr20.tar.gz <https://drive.google.com/file/d/1MIR64Yq8KMgzz8vWsqw4jb0SqlAojkFC/view?usp=sharing>`_ derived from published HeLa rG4-seq dataset (Kwok et al. 2016) is available for testing newly rG4-seeker installations. It will run for approximately 60 minutes.
+* An example dataset `hela-2016-chr20.tar.gz <https://drive.google.com/file/d/1K5bGJAQNlYuj_AaGDS4UiunETRizcgMC/view?usp=sharing>`_ derived from published HeLa rG4-seq dataset (Kwok et al. 2016) is available for testing newly rG4-seeker installations. It will run for approximately 60 minutes.
 
 * The example dataset is extracted into a directory containing all input files and a configuration file, and can be run directly::
 
