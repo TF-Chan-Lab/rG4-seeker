@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-MAINTAINER Eugene Chow "eugenechow823@gmail.com'
+MAINTAINER Eugene Chow "eugene.chow@link.cuhk.edu.hk'
 
 RUN apt-get update -y && apt-get install -y python3-pip python3-dev zlib1g-dev libbz2-dev liblzma-dev libcurl4-openssl-dev
 
