@@ -6,7 +6,7 @@
 **  Version 1.0 -- August 10, 2019
 **
 **  Copyright (C) 2019 by Eugene Yui-Ching Chow, Ting-Fung Chan, All rights reserved.
-**  Contact:  eugenechow823@gmail.com, tf.chan@cuhk.edu.hk
+**  Contact:  eugene.chow@link.cuhk.edu.hk, tf.chan@cuhk.edu.hk
 **  Organization:  School of Life Sciences, The Chinese University of Hong Kong,
 **                 Shatin, NT, Hong Kong SAR
 **
